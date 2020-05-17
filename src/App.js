@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Form from './components/Form';
+import { Typography } from '@material-ui/core';
+import { LocationOn } from '@material-ui/icons';
+import GoogleMapsWrapper from './components/Map';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [ipAddressData, setIpAddressData] = useState();
+    return (
+        <div className="App">
+            <main className="App-header">
+                <Typography variant="h3" color="primary">
+                    <LocationOn /> Ip Address Locator
+                </Typography>
+                <Form setIpAddressData={setIpAddressData} />
+            </main>
+            {!ipAddressData && <GoogleMapsWrapper ipAddressData={{ latitude: 60.16952, longitude: 24.93545 }} />}
+            {!!ipAddressData && <GoogleMapsWrapper ipAddressData={ipAddressData} />}
+        </div>
+    );
+};
 
 export default App;
