@@ -1,6 +1,5 @@
 import React from 'react';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
-const GOOGLE_API_KEY = 'AIzaSyB-Hq4VcEEjp0HIybBVmfHkVF0h9q0KXcY';
 
 const GoogleMap = ({ ipAddressData, google }) => {
     const { latitude, longitude } = ipAddressData;
